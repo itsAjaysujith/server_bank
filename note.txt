@@ -1,0 +1,95 @@
+jwt-token generation-user identification
+jsonwebtoken-library used to generate tokens--npm i jsonwebtoken
+sign()--inside jsonwebtoken lib--methode to generate token
+verify()-will validate the token
+
+token generated and send to client
+
+--token validation;
+   --by middlewares--only they can control request in server--before login request need to create a middleware
+                   --in middleware all things we need to work before request
+                   --it is a method--have three argument
+                      1)req
+                      2)res
+                      3)next
+              type of middleware;
+                     1)application specific middleware
+                              --work before everything--here we dont need bcoz register req not need middleware
+
+                      2)router specififc middleware
+                            --we can apply only in needed req--we use this       
+
+
+
+
+ try and catch--like if else
+ if chance of error that code will be in try                                    
+
+
+ --MONGO SHELL COMMANDS--
+
+ to see database--show dbs
+ to use database--use bankserver
+ to use collections inside db--show collections
+ view data inside collections--db.users.find()--users is name of collections
+ view any purticular item from collection--db.users.findOne({acno:1000})
+    if it is present it will be in object
+    not present it will be in null
+to insert data--db.users.insertOne({"acno":1001,"username":"bhim","password":123,"balance":100000,"transactions":[]})    
+
+apply condition--display person having balance 100000 above--db.users.find(balance:{$gt:100000})
+
+query selectors in mongod
+
+Name                                   Description
+$eq                       Matches values that are equal to a specified value.
+
+$gt                      Matches values that are greater than a specified value.
+
+$gte
+Matches values that are greater than or equal to a specified value.
+
+$in
+Matches any of the values specified in an array.
+
+$lt
+Matches values that are less than a specified value.
+
+$lte
+Matches values that are less than or equal to a specified value.
+
+$ne
+Matches all values that are not equal to a specified value.
+
+$nin
+Matches none of the values specified in an array.
+
+
+
+--to delete any db--db.users.deleteOne(acno:1002)
+if delete count above 0 it will be deleted or else not deleted
+
+--to update--like name(
+    db.users.updateOne({username:anu},{$set{username:"anu v"}})
+
+    if that person is not in db--db.users.updateOne({username:anu},{$set{username:"anu v"}}.upsert:true)
+
+
+
+ in bank server
+  register---insert
+  login---findOne
+  deposit---update
+  withdraw--update
+
+
+  bankserver backend
+  ------------------
+
+  both server(3000) and backend (27017) are differenet port
+  so we need to integrate both using mangoose library--npm i mongoose   
+
+
+ COMMUNICATION BETWEEN DIFF PORTs--data sharing--using cors (cross orgin resourse sharing)--between port of angular 4200 and server 3000
+              npm i cors       
+
